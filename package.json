@@ -1,0 +1,9 @@
+{
+  "name": "mobile-automation-framework",
+  "version": "1.0.0",
+  "description": "Mobile automation framework using WebdriverIO, Appium and Mocha.",
+  "private": true,
+  "scripts": {},
+  "author": "Lawrense Cantão",
+  "license": "MIT"
+}
