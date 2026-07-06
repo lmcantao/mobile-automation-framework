@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Test reports and results
+reports/
+allure-results/
+allure-report/
+
+# Screenshots and artifacts
+screenshots/
