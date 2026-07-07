@@ -1,3 +1,1 @@
-module.exports = {
-  // WebdriverIO hooks configuration
-};
+exports.hooks = {}
