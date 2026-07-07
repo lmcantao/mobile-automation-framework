@@ -11,3 +11,6 @@ allure-report/
 
 # Screenshots and artifacts
 screenshots/
+
+# App binaries and build outputs
+apps/
