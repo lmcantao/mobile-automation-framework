@@ -1,0 +1,50 @@
+{
+  "users": {
+    "validUser": {
+      "username": "standard_user",
+      "password": "secret_sauce",
+      "email": "user@example.com"
+    },
+    "invalidUser": {
+      "username": "locked_out_user",
+      "password": "secret_sauce"
+    },
+    "newUser": {
+      "username": "new_user",
+      "password": "NewPass123!",
+      "email": "newuser@example.com"
+    }
+  },
+  "forms": {
+    "validForm": {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": "1234567890",
+      "message": "This is a test message"
+    },
+    "emptyForm": {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "message": ""
+    },
+    "invalidForm": {
+      "name": "A",
+      "email": "invalid-email",
+      "phone": "123",
+      "message": "x"
+    }
+  },
+  "errorMessages": {
+    "invalidCredentials": "Invalid username or password",
+    "requiredField": "This field is required",
+    "invalidEmail": "Invalid email format",
+    "shortPassword": "Password must be at least 8 characters"
+  },
+  "navigation": {
+    "homeTab": "Home",
+    "loginTab": "Login",
+    "formsTab": "Forms",
+    "gesturesTab": "Gestures"
+  }
+}
