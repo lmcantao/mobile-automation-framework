@@ -1,0 +1,91 @@
+stages:
+  - install
+  - test
+  - report
+
+variables:
+  NODE_VERSION: "18"
+
+install_dependencies:
+  stage: install
+  image: node:18
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 hour
+  cache:
+    paths:
+      - node_modules/
+
+test_android_smoke:
+  stage: test
+  image: node:18
+  dependencies:
+    - install_dependencies
+  script:
+    - npm run test:android:smoke
+  artifacts:
+    paths:
+      - reports/
+      - allure-results/
+    expire_in: 30 days
+  allow_failure: false
+
+test_android_login:
+  stage: test
+  image: node:18
+  dependencies:
+    - install_dependencies
+  script:
+    - npm run test:android:login
+  artifacts:
+    paths:
+      - reports/
+      - allure-results/
+    expire_in: 30 days
+  allow_failure: true
+
+test_android_forms:
+  stage: test
+  image: node:18
+  dependencies:
+    - install_dependencies
+  script:
+    - npm run test:android:forms
+  artifacts:
+    paths:
+      - reports/
+      - allure-results/
+    expire_in: 30 days
+  allow_failure: true
+
+test_android_all:
+  stage: test
+  image: node:18
+  dependencies:
+    - install_dependencies
+  script:
+    - npm run test:android
+  artifacts:
+    paths:
+      - reports/
+      - allure-results/
+    expire_in: 30 days
+  only:
+    - merge_requests
+    - main
+
+generate_allure_report:
+  stage: report
+  image: node:18
+  dependencies:
+    - test_android_smoke
+  script:
+    - npm run allure:report
+  artifacts:
+    paths:
+      - allure-report/
+    expire_in: 30 days
+  allow_failure: true
