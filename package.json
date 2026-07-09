@@ -4,7 +4,18 @@
   "description": "Mobile automation framework using WebdriverIO, Appium and Mocha.",
   "private": true,
   "scripts": {
-    "test:android": "wdio run ./config/wdio.android.conf.js"
+    "test:android": "wdio run ./config/wdio.android.conf.js",
+    "test:android:smoke": "wdio run ./config/wdio.android.conf.js --spec ./tests/specs/smoke/**/*.spec.js",
+    "test:android:login": "wdio run ./config/wdio.android.conf.js --spec ./tests/specs/login/**/*.spec.js",
+    "test:android:forms": "wdio run ./config/wdio.android.conf.js --spec ./tests/specs/forms/**/*.spec.js",
+    "test:android:navigation": "wdio run ./config/wdio.android.conf.js --spec ./tests/specs/navigation/**/*.spec.js",
+    "test:android:gestures": "wdio run ./config/wdio.android.conf.js --spec ./tests/specs/gestures/**/*.spec.js",
+    "test:android:interactions": "wdio run ./config/wdio.android.conf.js --spec ./tests/specs/interactions/**/*.spec.js",
+    "test:ios": "wdio run ./config/wdio.ios.conf.js",
+    "test:ios:smoke": "wdio run ./config/wdio.ios.conf.js --spec ./tests/specs/smoke/**/*.spec.js",
+    "test:browserstack": "wdio run ./config/wdio.browserstack.conf.js",
+    "allure:report": "allure generate allure-results -o allure-report --clean",
+    "allure:serve": "allure serve allure-results"
   },
   "author": "Lawrense Cantão",
   "license": "MIT",

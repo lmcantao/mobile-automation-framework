@@ -21,9 +21,9 @@ exports.config = {
     ],
 
     // Serviços que devem ser iniciados antes da execução dos cenários.
-    //services: [
-    //    appiumService
-    //],
+    services: [
+        appiumService
+    ],
 
     // Reporters utilizados para exibir logs no console e gerar evidências detalhadas.
     reporters: [

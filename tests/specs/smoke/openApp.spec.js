@@ -1,12 +1,11 @@
-// Cenário de smoke para validar se o aplicativo foi aberto com sucesso.
-describe('Open App', () => {
+const HomePage = require('../../../src/pages/HomePage');
 
-    // Teste básico que garante que a app inicializa corretamente.
-    it('should launch the application', async () => {
+describe('Tela inicial', () => {
 
-        // Pausa intencional para permitir que a interface carregue antes da próxima validação.
-        await driver.pause(5000)
+    it('Deve abrir o aplicativo com sucesso', async () => {
 
-    })
+        await expect(HomePage.menuHome).toBeDisplayed();
 
-})
+    });
+
+});
