@@ -61,10 +61,6 @@ class LoginPage extends BasePage {
         await this.clicar(this.botaoEntrar);
     }
 
-    async obterMensagemRetorno() {
-        return await this.obterTexto(this.textoMensagemRetorno);
-    }
-
     async fecharMensagemRetorno() {
         await this.clicar(this.botaoConfirmarMensagem);
     }

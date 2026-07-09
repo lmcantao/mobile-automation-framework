@@ -15,6 +15,10 @@ exports.config = {
     // Herdando as definições base do ambiente compartilhado.
     ...config,
 
+    specs: [
+        './tests/specs/**/*.spec.js'
+    ],
+
     // Define quais capacidades serão usadas pela sessão do WebdriverIO.
     capabilities: [
         androidCapabilities

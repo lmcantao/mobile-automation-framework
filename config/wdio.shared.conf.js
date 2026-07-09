@@ -10,11 +10,6 @@ exports.config = {
 
     path: '/',
 
-    // Ponto de entrada dos testes. Todos os arquivos de spec devem ficar sob esta pasta.
-    specs: [
-        './tests/specs/**/*.spec.js'
-    ],
-
     // Limita a execução a uma instância por vez para reduzir ruído e facilitar a análise de falhas.
     maxInstances: 1,
 
