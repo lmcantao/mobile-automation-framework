@@ -4,7 +4,7 @@
   "description": "Mobile automation framework using WebdriverIO, Appium and Mocha.",
   "private": true,
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "test:android": "wdio run ./config/wdio.android.conf.js"
   },
   "author": "Lawrense Cantão",
   "license": "MIT",
