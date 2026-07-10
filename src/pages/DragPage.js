@@ -1,13 +1,21 @@
 const BasePage = require('./BasePage');
 
 class DragPage extends BasePage {
-  constructor() {
-    super();
-  }
 
-  async open() {
-    return this;
-  }
+    // ========= Menus =========
+
+    get menuDrag() {
+        return $('~Drag');
+    }
+
+   get textoMenuDrag() {
+        return $('//android.widget.TextView[@text="Drag and Drop"]');
+    }
+
+    async acessarDrag() {
+        await this.clicar(this.menuDrag);
+    }
+
 }
 
-module.exports = DragPage;
+module.exports = new DragPage();

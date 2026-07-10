@@ -5,6 +5,10 @@
     },
     "usuarioInvalido": {
         "email": "teste",
+        "senha": "12345678"
+    },
+     "senhaInvalida": {
+        "email": "qa@test.com",
         "senha": "123"
     }
 }
