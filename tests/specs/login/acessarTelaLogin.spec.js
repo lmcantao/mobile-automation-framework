@@ -7,7 +7,7 @@ describe('Tela de Login', () => {
 
         await HomePage.acessarLogin();
 
-        await expect(LoginPage.campoEmail).toBeDisplayed();
+        await expect(LoginPage.tituloLogin).toHaveText('Login / Sign up Form');
 
     });
 

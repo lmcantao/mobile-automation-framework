@@ -1,7 +1,10 @@
-[
-  {
-    "id": 1,
-    "name": "Form 1",
-    "fields": []
+{
+  "forms": {
+    "field": {
+      "texto": "Teste automatizado WebdriverIO"
+    },
+    "dropdown": {
+      "opcao": "Appium is awesome"
+    }
   }
-]
+}

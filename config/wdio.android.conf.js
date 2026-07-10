@@ -16,7 +16,7 @@ exports.config = {
     ...config,
 
     specs: [
-        './tests/specs/**/*.spec.js'
+        '../tests/specs/**/*.spec.js'
     ],
 
     // Define quais capacidades serão usadas pela sessão do WebdriverIO.

@@ -1,25 +1,38 @@
-const { expect } = require('chai');
-const dataHelper = require('../../../src/helpers/dataHelper');
-const logger = require('../../../src/helpers/logger');
+const HomePage = require('../../../src/pages/HomePage');
+const LoginPage = require('../../../src/pages/LoginPage');
 
-describe('Smoke Tests - Basic App Functionality', () => {
-  before(async () => {
-    logger.info('Starting smoke tests');
-  });
+describe('Tela inicial', () => {
 
-  it('should open the app successfully', async () => {
-    const isDisplayed = await $('~app-screen').isDisplayed();
-    expect(isDisplayed).to.be.true;
-    logger.success('App opened successfully');
-  });
+    it('Deve abrir o aplicativo com sucesso', async () => {
+        // Valida se o elemento mapeado na HomePage está visível na tela
+        await expect(HomePage.menuHome).toBeDisplayed();
 
-  it('should navigate to login screen', async () => {
-    // Implementation for navigation test
-    logger.info('Navigating to login screen');
-  });
+        await expect(HomePage.textoMenuHome).toHaveText('WEBDRIVER');
+    });
 
-  it('should display main menu items', async () => {
-    // Implementation for menu verification
-    logger.info('Verifying menu items');
-  });
+    it('Deve exibir os itens do menu principal', async () => {
+        // Valida se os botões do menu principal estão visíveis
+        await expect(HomePage.menuHome).toBeDisplayed();
+
+        await expect(HomePage.menuDrag).toBeDisplayed();
+
+        await expect(HomePage.menuSwipe).toBeDisplayed();
+
+        await expect(HomePage.menuFormularios).toBeDisplayed();
+
+        await expect(HomePage.menuLogin).toBeDisplayed();
+
+        await expect(HomePage.menuWeb).toBeDisplayed();
+
+        await expect(HomePage.menu).toBeDisplayed();
+
+    });
+
+    it('Deve navegar para a tela de login', async () => {
+        // Acesando a tela de login através do menu principal
+        await LoginPage.acessarTela();
+
+        await expect(LoginPage.tituloLogin).toHaveText('Login / Sign up Form');
+    });
+
 });
