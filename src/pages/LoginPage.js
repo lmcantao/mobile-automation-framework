@@ -8,6 +8,10 @@ class LoginPage extends BasePage {
         return $('~Login');
     }
 
+    get tituloLogin() {
+        return $('//android.widget.TextView[@text="Login / Sign up Form"]');
+    }
+
     // ========= Campos =========
 
     get campoEmail() {
@@ -46,6 +50,7 @@ class LoginPage extends BasePage {
         return $('//android.widget.Button[@resource-id="android:id/button1"]');
     }
 
+    // ========= Métodos =========
     async acessarTela() {
         await this.clicar(this.menuLogin);
     }
@@ -59,10 +64,6 @@ class LoginPage extends BasePage {
         await this.ocultarTeclado();
 
         await this.clicar(this.botaoEntrar);
-    }
-
-    async obterMensagemRetorno() {
-        return await this.obterTexto(this.textoMensagemRetorno);
     }
 
     async fecharMensagemRetorno() {

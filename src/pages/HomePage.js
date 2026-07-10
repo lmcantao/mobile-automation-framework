@@ -6,8 +6,8 @@ class HomePage extends BasePage {
         return $('~Home');
     }
 
-    get menuWebview() {
-        return $('~Webview');
+    get menuWeb() {
+        return $('//android.widget.TextView[@text="Web"]');
     }
 
     get menuLogin() {
@@ -24,6 +24,14 @@ class HomePage extends BasePage {
 
     get menuDrag() {
         return $('~Drag');
+    }
+
+    get menu() {
+        return $('~Menu');
+    }
+
+    get textoMenuHome() {
+        return $('//android.widget.TextView[@text="WEBDRIVER"]');
     }
 
     async acessarHome() {

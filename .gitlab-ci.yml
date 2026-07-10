@@ -1,91 +1,66 @@
 stages:
-  - install
-  - test
-  - report
+  - testes
+  - relatorio
 
 variables:
-  NODE_VERSION: "18"
+  NODE_ENV: "test"
 
-install_dependencies:
-  stage: install
-  image: node:18
-  script:
-    - npm install
-  artifacts:
-    paths:
-      - node_modules/
-    expire_in: 1 hour
-  cache:
-    paths:
-      - node_modules/
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
 
-test_android_smoke:
-  stage: test
-  image: node:18
-  dependencies:
-    - install_dependencies
-  script:
-    - npm run test:android:smoke
-  artifacts:
-    paths:
-      - reports/
-      - allure-results/
-    expire_in: 30 days
-  allow_failure: false
+testes_android:
+  stage: testes
 
-test_android_login:
-  stage: test
-  image: node:18
-  dependencies:
-    - install_dependencies
-  script:
-    - npm run test:android:login
-  artifacts:
-    paths:
-      - reports/
-      - allure-results/
-    expire_in: 30 days
-  allow_failure: true
+  tags:
+    - android
+    - appium
 
-test_android_forms:
-  stage: test
-  image: node:18
-  dependencies:
-    - install_dependencies
-  script:
-    - npm run test:android:forms
-  artifacts:
-    paths:
-      - reports/
-      - allure-results/
-    expire_in: 30 days
-  allow_failure: true
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
-test_android_all:
-  stage: test
-  image: node:18
-  dependencies:
-    - install_dependencies
+  before_script:
+    - node --version
+    - npm --version
+    - java -version
+    - adb devices
+    - npm ci --cache .npm --prefer-offline
+
   script:
     - npm run test:android
-  artifacts:
-    paths:
-      - reports/
-      - allure-results/
-    expire_in: 30 days
-  only:
-    - merge_requests
-    - main
 
-generate_allure_report:
-  stage: report
-  image: node:18
-  dependencies:
-    - test_android_smoke
-  script:
-    - npm run allure:report
   artifacts:
+    when: always
+    expire_in: 7 days
     paths:
-      - allure-report/
-    expire_in: 30 days
-  allow_failure: true
+      - reports/allure-results/
+      - logs/
+
+relatorio_allure:
+  stage: relatorio
+
+  tags:
+    - android
+    - appium
+
+  needs:
+    - job: testes_android
+      artifacts: true
+
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run allure:generate
+
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - reports/allure-report/
