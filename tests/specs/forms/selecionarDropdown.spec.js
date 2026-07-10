@@ -10,7 +10,7 @@ describe('Forms', () => {
 
         await FormsPage.clicarDropdown();
 
-        await FormsPage.clicarOpcaoDropdown();''
+        await FormsPage.clicarOpcaoDropdown();
 
         await expect(FormsPage.seletorETextoDropdown)
             .toHaveText(dados.forms.dropdown.opcao);

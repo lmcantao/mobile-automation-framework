@@ -100,7 +100,7 @@ class FormsPage extends BasePage {
 
     async clicarDropdown() {
       await this.scrollVertical();
-      await this.clicar(this.dropdown);
+      await this.clicar(this.seletorETextoDropdown);
     }
 
     async clicarOpcaoDropdown() {
